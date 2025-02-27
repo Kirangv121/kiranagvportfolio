@@ -137,3 +137,57 @@ function typeEffect() {
 }
 
 typeEffect();
+///////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+// Create and append CSS styles dynamically
+const style = document.createElement("style");
+style.innerHTML = `
+  /* Default profile image styling */
+  .navimg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Hover effect for profile image */
+  .navimg:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Profile popup effect */
+  .popup1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    transition: all 0.4s ease-in-out;
+  }
+
+  /* When in popup mode, make it larger */
+  .popup1 img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+`;
+document.head.appendChild(style);
+
+// Profile Image Click Event
+const navimg = document.querySelector(".navimg");
+
+navimg.addEventListener("click", () => {
+  navimg.classList.toggle("popup1"); // Toggle the popup effect
+});
