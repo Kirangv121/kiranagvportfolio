@@ -1,0 +1,296 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    @apply bg-gray-900 text-white;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+    }
+    to {
+      box-shadow: 0 0 30px rgba(34, 211, 238, 0.8);
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-slow {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 3s infinite;
+  }
+
+  @keyframes bounce-slow {
+    0%,
+    100% {
+      transform: translateY(0);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: translateY(-10px);
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out;
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .hover-glow {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hover-glow::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .hover-glow:hover::before {
+    left: 100%;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
+  }
+
+  .button-primary {
+    @apply px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold;
+    @apply transform transition-all duration-300 shadow-lg;
+    @apply hover:from-cyan-600 hover:to-blue-700 hover:scale-105 hover:shadow-cyan-500/25;
+    @apply active:scale-95;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .button-primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+  }
+
+  .button-primary:hover::before {
+    left: 100%;
+  }
+
+  .button-secondary {
+    @apply px-8 py-4 border-2 border-cyan-400 text-cyan-400 rounded-full font-semibold;
+    @apply transform transition-all duration-300;
+    @apply hover:bg-cyan-400 hover:text-gray-900 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25;
+    @apply active:scale-95;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+    @apply hover:scale-105 hover:shadow-2xl;
+  }
+
+  .card-hover:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 0 30px rgba(34, 211, 238, 0.1);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent;
+  }
+
+  .border-gradient {
+    background: linear-gradient(var(--tw-gradient-angle, 0deg), var(--tw-gradient-stops));
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .nav-link {
+    @apply relative text-gray-300 transition-all duration-300;
+    @apply hover:text-cyan-400;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #22d3ee, #3b82f6);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .skill-card {
+    @apply bg-gray-800/50 p-6 rounded-xl border border-gray-700/50;
+    @apply transition-all duration-500 hover:border-cyan-400/50;
+    @apply hover:bg-gray-700/50 hover:shadow-lg hover:shadow-cyan-400/10;
+    @apply transform hover:scale-105 hover:-translate-y-2;
+  }
+
+  .project-card {
+    @apply bg-gray-900/50 rounded-xl border border-gray-700/50 overflow-hidden;
+    @apply transition-all duration-500 hover:border-cyan-400/50;
+    @apply hover:shadow-2xl hover:shadow-cyan-400/20;
+    @apply transform hover:scale-105 hover:-translate-y-3;
+  }
+
+  .achievement-card {
+    @apply bg-gray-900/50 p-6 rounded-xl border border-gray-700/50;
+    @apply transition-all duration-500 hover:border-cyan-400/50;
+    @apply hover:bg-gray-800/50 hover:shadow-xl hover:shadow-cyan-400/15;
+    @apply transform hover:scale-105 hover:-translate-y-2;
+  }
+
+  .social-link {
+    @apply p-3 bg-gray-800/50 rounded-lg border border-gray-700/50;
+    @apply text-gray-400 transition-all duration-300;
+    @apply hover:border-cyan-400/50 hover:bg-cyan-400/10;
+    @apply transform hover:scale-110 hover:-translate-y-1;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-cyan-500 to-blue-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply from-cyan-400 to-blue-500;
+}
+
+/* Selection styles */
+::selection {
+  @apply bg-cyan-500/30 text-white;
+}
+
+/* Smooth focus styles */
+*:focus {
+  outline: 2px solid rgba(34, 211, 238, 0.5);
+  outline-offset: 2px;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
